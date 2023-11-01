@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -8,4 +5,85 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  MEMBER
+}
+
+model Org {
+  id               String   @id @default(uuid())
+  responsible_name String
+  email            String   @unique
+  password_hash    String
+  cep              String
+  address          String
+  whatsapp         String
+  created_at       DateTime @default(now())
+  role             Role     @default(ADMIN)
+
+  pets Pet[]
+
+  @@map("orgs")
+}
+
+model Pet {
+  id          String      @id @default(uuid())
+  description String
+  age         Int
+  size        Size
+  energy      Energy
+  independece Independece
+  environment Environment
+  images      String[]
+  requisites  String[]
+
+  org   Org    @relation(fields: [orgId], references: [id])
+  orgId String
+
+  @@map("pets")
+}
+
+// Pet life stage (age)
+
+enum Age {
+  PUPPY // Filhote
+  ADULT // Adulto
+  SENIOR // Senior
+  ELDERLY // Idoso
+}
+
+// Pet Size
+
+enum Size {
+  SMALL
+  MEDIUM
+  LARGE
+}
+
+// Pet Energt Level
+
+enum Energy {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+// Pet Independece
+
+enum Independece {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+// Pet environment
+
+enum Environment {
+  SPACIOUS // Interno
+  INDOOR // Externo
+  OUTDOOR // Amplo
+  QUIET // Quieto
+  OTHER // Outros
 }
