@@ -18,7 +18,7 @@
 
 ### Requisitos não-funcionais
 
-[ ] - A senha do usuario precisa estar criptografada;
-[ ] - Os dados da aplicacao precisam estar persistidos em banco PostgresSQL;
+[X] - A senha do usuario precisa estar criptografada;
+[X] - Os dados da aplicacao precisam estar persistidos em banco PostgresSQL;
 [ ] - Todas listas de dados precisam estar paginadas com 20 itens por pagina;
 [ ] - O usuario deve ser identificado por um JWT (Json Web Token);
