@@ -30,8 +30,9 @@ model Org {
 
 model Pet {
   id          String      @id @default(uuid())
+  name        String
   description String
-  age         Int
+  age         Age
   size        Size
   energy      Energy
   independece Independece
@@ -40,8 +41,8 @@ model Pet {
   requisites  String[]
   created_at  DateTime    @default(now())
 
-  org   Org    @relation(fields: [orgId], references: [id])
-  orgId String
+  org    Org    @relation(fields: [org_id], references: [id])
+  org_id String
 
   @@map("pets")
 }
