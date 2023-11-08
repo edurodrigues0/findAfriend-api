@@ -1,4 +1,4 @@
-import { Prisma, Org, Role } from '@prisma/client'
+import { Prisma, Org, Role, $Enums } from '@prisma/client'
 import { OrgsRepository } from '../orgs-repository'
 import { randomUUID } from 'node:crypto'
 
@@ -7,11 +7,13 @@ export class InMemoryOrgsRepository implements OrgsRepository {
 
   async create(data: Prisma.OrgCreateInput): Promise<Org> {
     const org: Org = {
-      id: randomUUID(),
+      id: data.id ?? randomUUID(),
       responsible_name: data.responsible_name,
       email: data.email,
       password_hash: data.password_hash,
       cep: data.cep,
+      city: data.city,
+      state: data.state,
       address: data.address,
       whatsapp: data.whatsapp,
       created_at: new Date(),
@@ -31,5 +33,13 @@ export class InMemoryOrgsRepository implements OrgsRepository {
     }
 
     return org
+  }
+
+  async findPetsByCity(city: string, state: string) {
+    const orgs = this.items.filter((item) => {
+      return item.city === city && item.state === state
+    })
+
+    return orgs
   }
 }

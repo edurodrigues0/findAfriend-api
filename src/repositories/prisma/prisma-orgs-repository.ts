@@ -20,4 +20,15 @@ export class PrismaOrgsRepository implements OrgsRepository {
 
     return org
   }
+
+  async findPetsByCity(city: string, state: string) {
+    const org = await prisma.org.findMany({
+      where: {
+        city,
+        state,
+      },
+    })
+
+    return org
+  }
 }

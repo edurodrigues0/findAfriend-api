@@ -11,11 +11,21 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
     password: z.string().min(6),
     whatsapp: z.string(),
     cep: z.string(),
+    city: z.string(),
+    state: z.string().max(2),
     address: z.string(),
   })
 
-  const { responsibleName, email, password, whatsapp, cep, address } =
-    registerBodySchema.parse(request.body)
+  const {
+    responsibleName,
+    email,
+    password,
+    whatsapp,
+    cep,
+    address,
+    city,
+    state,
+  } = registerBodySchema.parse(request.body)
 
   try {
     const prismaOrgsRepository = new PrismaOrgsRepository()
@@ -27,6 +37,8 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
       password,
       whatsapp,
       cep,
+      city,
+      state,
       address,
     })
   } catch (err) {

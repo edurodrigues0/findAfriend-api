@@ -19,6 +19,8 @@ describe('Register Orgs Use Case', () => {
       email: 'johndoe@example.com',
       password: '123456',
       address: 'Rua Sao Miguel, 239A, Chafariz',
+      city: 'Sacramento',
+      state: 'MG',
       cep: '38190-000',
       whatsapp: '(34) 9 98424-9953',
     })
@@ -36,6 +38,8 @@ describe('Register Orgs Use Case', () => {
       email,
       password: '123456',
       address: 'Rua Sao Miguel, 239A, Chafariz',
+      city: 'Sacramento',
+      state: 'MG',
       cep: '38190-000',
       whatsapp: '(34) 9 98424-9953',
     })
@@ -46,6 +50,8 @@ describe('Register Orgs Use Case', () => {
         email,
         password: '123456',
         address: 'Rua Sao Miguel, 239A, Chafariz',
+        city: 'Sacramento',
+        state: 'MG',
         cep: '38190-000',
         whatsapp: '(34) 9 98424-9953',
       }),
@@ -58,6 +64,8 @@ describe('Register Orgs Use Case', () => {
       email: 'johndoe@example.com',
       password: '123456',
       address: 'Rua Sao Miguel, 239A, Chafariz',
+      city: 'Sacramento',
+      state: 'MG',
       cep: '38190-000',
       whatsapp: '(34) 9 98424-9953',
     })

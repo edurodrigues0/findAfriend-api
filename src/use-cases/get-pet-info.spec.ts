@@ -8,7 +8,7 @@ let ongRepository: InMemoryOrgsRepository
 let petsRepository: InMemoryPetsRepository
 let sut: GetPetInfoUseCase
 
-describe('Register Orgs Use Case', () => {
+describe('Get Pet Use Case', () => {
   beforeEach(async () => {
     ongRepository = new InMemoryOrgsRepository()
     petsRepository = new InMemoryPetsRepository()
@@ -20,6 +20,8 @@ describe('Register Orgs Use Case', () => {
       email: 'johndoe@example.com',
       password_hash: '123456',
       address: 'Rua Sao Miguel, 239A, Chafariz',
+      city: 'Sacramento',
+      state: 'MG',
       cep: '38190-000',
       whatsapp: '(34) 9 98424-9953',
     })

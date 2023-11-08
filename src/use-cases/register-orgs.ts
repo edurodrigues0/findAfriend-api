@@ -10,6 +10,8 @@ interface RegisterOrgsUseCaseRequest {
   cep: string
   whatsapp: string
   address: string
+  city: string
+  state: string
 }
 
 interface RegisterOrgUseCaseResponse {
@@ -23,6 +25,8 @@ export class RegisterOrgUseCase {
     responsibleName,
     email,
     password,
+    city,
+    state,
     address,
     cep,
     whatsapp,
@@ -39,6 +43,8 @@ export class RegisterOrgUseCase {
       responsible_name: responsibleName,
       email,
       password_hash,
+      city,
+      state,
       address,
       cep,
       whatsapp,
