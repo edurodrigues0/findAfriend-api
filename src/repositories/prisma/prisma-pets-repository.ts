@@ -1,5 +1,5 @@
 import { prisma } from '@/lib/prisma'
-import { $Enums, Org, Prisma } from '@prisma/client'
+import { Prisma } from '@prisma/client'
 import { PetsRepository } from '../pets-repository'
 
 export class PrismaPetsRepository implements PetsRepository {

@@ -1,4 +1,4 @@
-import { Prisma, Org, Role, $Enums } from '@prisma/client'
+import { Prisma, Org, Role } from '@prisma/client'
 import { OrgsRepository } from '../orgs-repository'
 import { randomUUID } from 'node:crypto'
 
@@ -41,5 +41,17 @@ export class InMemoryOrgsRepository implements OrgsRepository {
     })
 
     return orgs
+  }
+
+  async findWhatsappById(id: string) {
+    const org = this.items.find((item) => {
+      return item.id === id
+    })
+
+    if (!org) {
+      return null
+    }
+
+    return org.whatsapp
   }
 }

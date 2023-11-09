@@ -33,7 +33,7 @@ export class FetchPetUseCase {
     const pets = (
       await Promise.all(
         ongs.map(async (ong) => {
-          return this.petsRepository.findByOrg(ong.id, page)
+          return this.petsRepository.fetchByOrg(ong.id, page)
         }),
       )
     ).flat()

@@ -1,18 +1,18 @@
 import { expect, it, describe, beforeEach } from 'vitest'
 import { InMemoryPetsRepository } from '@/repositories/in-memory/in-memory-pets-repository'
 import { InMemoryOrgsRepository } from '@/repositories/in-memory/in-memory-orgs-repository'
-import { GetPetInfoUseCase } from './get-pet-info'
-import { ResourceNotFoundError } from './errors/resource-not-found-error'
+import { SearchPetsByCharacteristicsUseCase } from './search-pets-by-characteristics'
+import console from 'console'
 
 let orgsRepository: InMemoryOrgsRepository
 let petsRepository: InMemoryPetsRepository
-let sut: GetPetInfoUseCase
+let sut: SearchPetsByCharacteristicsUseCase
 
-describe('Get Pet Use Case', () => {
+describe('Search Pets By Characteristics Use Case', () => {
   beforeEach(async () => {
     orgsRepository = new InMemoryOrgsRepository()
     petsRepository = new InMemoryPetsRepository()
-    sut = new GetPetInfoUseCase(petsRepository, orgsRepository)
+    sut = new SearchPetsByCharacteristicsUseCase(petsRepository, orgsRepository)
 
     await orgsRepository.create({
       id: 'ong-01',
@@ -27,11 +27,10 @@ describe('Get Pet Use Case', () => {
     })
   })
 
-  it('should be able get pet info', async () => {
-    const createdPet = await petsRepository.create({
+  it('should be able search pets by characteristics', async () => {
+    await petsRepository.create({
       name: 'Alfredo',
-      description:
-        'Eu sou um lindo doguinho de 3 anos, um jovem brincalhao que adora fazer companhia, uma arte mas tambem ama uma soneca.',
+      description: 'pet description',
       age: 'PUPPY',
       energy: 'HIGH',
       size: 'SMALL',
@@ -45,19 +44,30 @@ describe('Get Pet Use Case', () => {
       images: [],
     })
 
-    const { pet, whatsapp } = await sut.execute({
-      petId: createdPet.id,
+    await petsRepository.create({
+      name: 'Osvaldo',
+      description: 'pet description',
+      age: 'ELDERLY',
+      energy: 'LOW',
+      size: 'LARGE',
+      environment: 'SPACIOUS',
+      independece: 'MEDIUM',
+      org_id: 'ong-01',
+      requisites: [
+        'Local grande para o animal correr e brincar',
+        'Proibido apartamento',
+      ],
+      images: [],
     })
 
-    expect(pet.name).toEqual('Alfredo')
-    expect(whatsapp).toEqual('(34) 9 98424-9953')
-  })
+    const { pets } = await sut.execute({
+      page: 1,
+      city: 'Sacramento',
+      state: 'MG',
+      size: 'LARGE',
+      independece: 'MEDIUM',
+    })
 
-  it('not should be able get pet info with wrong id', async () => {
-    await expect(() =>
-      sut.execute({
-        petId: 'wrong-id',
-      }),
-    ).rejects.toBeInstanceOf(ResourceNotFoundError)
+    expect(pets).toHaveLength(1)
   })
 })
