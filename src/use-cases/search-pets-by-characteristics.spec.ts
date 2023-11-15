@@ -2,7 +2,6 @@ import { expect, it, describe, beforeEach } from 'vitest'
 import { InMemoryPetsRepository } from '@/repositories/in-memory/in-memory-pets-repository'
 import { InMemoryOrgsRepository } from '@/repositories/in-memory/in-memory-orgs-repository'
 import { SearchPetsByCharacteristicsUseCase } from './search-pets-by-characteristics'
-import console from 'console'
 
 let orgsRepository: InMemoryOrgsRepository
 let petsRepository: InMemoryPetsRepository
@@ -64,8 +63,8 @@ describe('Search Pets By Characteristics Use Case', () => {
       page: 1,
       city: 'Sacramento',
       state: 'MG',
-      size: 'LARGE',
-      independece: 'MEDIUM',
+      size: 'SMALL',
+      age: 'PUPPY',
     })
 
     expect(pets).toHaveLength(1)
