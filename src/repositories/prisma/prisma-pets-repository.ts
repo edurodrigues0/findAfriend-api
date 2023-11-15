@@ -19,7 +19,7 @@ export class PrismaPetsRepository implements PetsRepository {
     return pet
   }
 
-  async findByOrg(orgId: string, page: number) {
+  async fetchByOrg(orgId: string, page: number) {
     const pets = await prisma.pet.findMany({
       where: {
         org_id: orgId,
