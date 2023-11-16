@@ -22,7 +22,3 @@
 [X] - Os dados da aplicacao precisam estar persistidos em banco PostgresSQL;
 [X] - Todas listas de dados precisam estar paginadas com 20 itens por pagina;
 [X] - O usuario deve ser identificado por um JWT (Json Web Token);
-
-## TO-DO
-
-[ ] - Mudar nome 'friend-a-friend' dos arquivos para 'find-a-friend'
