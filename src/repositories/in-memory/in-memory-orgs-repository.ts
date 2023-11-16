@@ -54,6 +54,6 @@ export class InMemoryOrgsRepository implements OrgsRepository {
 
     const { whatsapp } = org
 
-    return whatsapp
+    return { whatsapp }
   }
 }

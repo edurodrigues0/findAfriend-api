@@ -14,14 +14,14 @@
 [X] - Um pet deve estar ligado a uma ORG;
 [X] - O usuário que quer adotar, entrará em contato com a ORG via WhatsApp;
 [X] - Todos os filtros, além da cidade, são opcionais;
-[ ] - Para uma ORG acessar a aplicação como admin, ela precisa estar logada;
+[X] - Para uma ORG acessar a aplicação como admin, ela precisa estar logada;
 
 ## Requisitos não-funcionais
 
 [X] - A senha do usuario precisa estar criptografada;
 [X] - Os dados da aplicacao precisam estar persistidos em banco PostgresSQL;
 [X] - Todas listas de dados precisam estar paginadas com 20 itens por pagina;
-[ ] - O usuario deve ser identificado por um JWT (Json Web Token);
+[X] - O usuario deve ser identificado por um JWT (Json Web Token);
 
 ## TO-DO
 

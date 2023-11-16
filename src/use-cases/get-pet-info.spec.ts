@@ -50,7 +50,11 @@ describe('Get Pet Use Case', () => {
     })
 
     expect(pet.name).toEqual('Alfredo')
-    expect(whatsapp).toEqual('(34) 9 98424-9953')
+    expect(whatsapp).toEqual(
+      expect.objectContaining({
+        whatsapp: '(34) 9 98424-9953',
+      }),
+    )
   })
 
   it('not should be able get pet info with wrong id', async () => {
